@@ -77,6 +77,18 @@
         "LogGroupName": "/aws/lambda/auth-server-dev-getAuthURL"
       }
     },
+    "GetAccessTokenLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/auth-server-dev-getAccessToken"
+      }
+    },
+    "GetCalendarEventsLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/auth-server-dev-getCalendarEvents"
+      }
+    },
     "IamRoleLambdaExecution": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -161,7 +173,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/auth-server/dev/1640402273017-2021-12-25T03:17:53.017Z/auth-server.zip"
+          "S3Key": "serverless/auth-server/dev/1640420973078-2021-12-25T08:29:33.078Z/auth-server.zip"
         },
         "Handler": "handler.getAuthURL",
         "Runtime": "nodejs12.x",
@@ -173,7 +185,7 @@
             "CLIENT_ID": "41556250072-ckh82g60ijfhm6unrkadovqbsiqpkegs.apps.googleusercontent.com",
             "CLIENT_SECRET": "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",
             "PROJECT_ID": "meet-app-335900",
-            "CALENDAR_ID": "quilos.kyla@gmail.com"
+            "CALENDAR_ID": "fullstackwebdev@careerfoundry.com"
           }
         },
         "Role": {
@@ -187,14 +199,100 @@
         "GetAuthURLLogGroup"
       ]
     },
-    "GetAuthURLLambdaVersionkm9X8WPauGPzTz82svQ21SS68AYeMw0pfjF3pm9JxYU": {
+    "GetAccessTokenLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/auth-server/dev/1640420973078-2021-12-25T08:29:33.078Z/auth-server.zip"
+        },
+        "Handler": "handler.getAccessToken",
+        "Runtime": "nodejs12.x",
+        "FunctionName": "auth-server-dev-getAccessToken",
+        "MemorySize": 1024,
+        "Timeout": 60,
+        "Environment": {
+          "Variables": {
+            "CLIENT_ID": "41556250072-ckh82g60ijfhm6unrkadovqbsiqpkegs.apps.googleusercontent.com",
+            "CLIENT_SECRET": "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",
+            "PROJECT_ID": "meet-app-335900",
+            "CALENDAR_ID": "fullstackwebdev@careerfoundry.com"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "GetAccessTokenLogGroup"
+      ]
+    },
+    "GetCalendarEventsLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/auth-server/dev/1640420973078-2021-12-25T08:29:33.078Z/auth-server.zip"
+        },
+        "Handler": "handler.getCalendarEvents",
+        "Runtime": "nodejs12.x",
+        "FunctionName": "auth-server-dev-getCalendarEvents",
+        "MemorySize": 1024,
+        "Timeout": 60,
+        "Environment": {
+          "Variables": {
+            "CLIENT_ID": "41556250072-ckh82g60ijfhm6unrkadovqbsiqpkegs.apps.googleusercontent.com",
+            "CLIENT_SECRET": "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",
+            "PROJECT_ID": "meet-app-335900",
+            "CALENDAR_ID": "fullstackwebdev@careerfoundry.com"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "GetCalendarEventsLogGroup"
+      ]
+    },
+    "GetAuthURLLambdaVersionYNBfnXRWQQI9zU8I0p4vpqqYjhTJl7ELdIco2Lc6jE4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetAuthURLLambdaFunction"
         },
-        "CodeSha256": "oCkD1atcWZbIfEWxnrnA73PLQVnlAypF1JT9LT2nLTU="
+        "CodeSha256": "lmPNSZc+JhSOcfyvxuScfXxcmUAJ7/XEmaKkjBWhjgM="
+      }
+    },
+    "GetAccessTokenLambdaVersion7QPl8benyHuR0rabY6ZFTQrp1lBz8LRYR1FJTPqIPk": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetAccessTokenLambdaFunction"
+        },
+        "CodeSha256": "lmPNSZc+JhSOcfyvxuScfXxcmUAJ7/XEmaKkjBWhjgM="
+      }
+    },
+    "GetCalendarEventsLambdaVersionSJPpbJNrUq2TCpGcExUL88VDUwFJfKhXwxcoWwQw": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetCalendarEventsLambdaFunction"
+        },
+        "CodeSha256": "lmPNSZc+JhSOcfyvxuScfXxcmUAJ7/XEmaKkjBWhjgM="
       }
     },
     "ApiGatewayRestApi": {
@@ -231,6 +329,54 @@
           "Ref": "ApiGatewayResourceApi"
         },
         "PathPart": "get-auth-url",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceApiToken": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceApi"
+        },
+        "PathPart": "token",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceApiTokenCodeVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceApiToken"
+        },
+        "PathPart": "{code}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceApiGetDashevents": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceApi"
+        },
+        "PathPart": "get-events",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceApiGetDasheventsAccesstokenVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceApiGetDashevents"
+        },
+        "PathPart": "{access_token}",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -282,7 +428,99 @@
         "GetAuthURLLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1640402265290": {
+    "ApiGatewayMethodApiTokenCodeVarGet": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceApiTokenCodeVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "GetAccessTokenLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "GetAccessTokenLambdaPermissionApiGateway"
+      ]
+    },
+    "ApiGatewayMethodApiGetDasheventsAccesstokenVarGet": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceApiGetDasheventsAccesstokenVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "GetCalendarEventsLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "GetCalendarEventsLambdaPermissionApiGateway"
+      ]
+    },
+    "ApiGatewayDeployment1640420968002": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -291,7 +529,9 @@
         "StageName": "dev"
       },
       "DependsOn": [
-        "ApiGatewayMethodApiGetDashauthDashurlGet"
+        "ApiGatewayMethodApiGetDashauthDashurlGet",
+        "ApiGatewayMethodApiTokenCodeVarGet",
+        "ApiGatewayMethodApiGetDasheventsAccesstokenVarGet"
       ]
     },
     "GetAuthURLLambdaPermissionApiGateway": {
@@ -300,6 +540,80 @@
         "FunctionName": {
           "Fn::GetAtt": [
             "GetAuthURLLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "GetAccessTokenLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GetAccessTokenLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "GetCalendarEventsLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GetCalendarEventsLambdaFunction",
             "Arn"
           ]
         },
@@ -344,10 +658,28 @@
     "GetAuthURLLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetAuthURLLambdaVersionkm9X8WPauGPzTz82svQ21SS68AYeMw0pfjF3pm9JxYU"
+        "Ref": "GetAuthURLLambdaVersionYNBfnXRWQQI9zU8I0p4vpqqYjhTJl7ELdIco2Lc6jE4"
       },
       "Export": {
         "Name": "sls-auth-server-dev-GetAuthURLLambdaFunctionQualifiedArn"
+      }
+    },
+    "GetAccessTokenLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "GetAccessTokenLambdaVersion7QPl8benyHuR0rabY6ZFTQrp1lBz8LRYR1FJTPqIPk"
+      },
+      "Export": {
+        "Name": "sls-auth-server-dev-GetAccessTokenLambdaFunctionQualifiedArn"
+      }
+    },
+    "GetCalendarEventsLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "GetCalendarEventsLambdaVersionSJPpbJNrUq2TCpGcExUL88VDUwFJfKhXwxcoWwQw"
+      },
+      "Export": {
+        "Name": "sls-auth-server-dev-GetCalendarEventsLambdaFunctionQualifiedArn"
       }
     },
     "ServiceEndpoint": {
