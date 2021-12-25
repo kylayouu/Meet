@@ -7,14 +7,14 @@
     "provider": {
       "name": "aws",
       "runtime": "nodejs12.x",
-      "region": "eu-central-1",
+      "region": "us-west-1",
       "timeout": 60,
       "lambdaHashingVersion": "20201221",
       "environment": {
         "CLIENT_ID": "41556250072-ckh82g60ijfhm6unrkadovqbsiqpkegs.apps.googleusercontent.com",
         "CLIENT_SECRET": "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",
         "PROJECT_ID": "meet-app-335900",
-        "CALENDAR_ID": "fullstackwebdev@careerfoundry.com"
+        "CALENDAR_ID": "quilos.kyla@gmail.com"
       },
       "stage": "dev",
       "versionFunctions": true,
@@ -181,7 +181,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/auth-server/dev/1640393497421-2021-12-25T00:51:37.421Z/auth-server.zip"
+                "S3Key": "serverless/auth-server/dev/1640402273017-2021-12-25T03:17:53.017Z/auth-server.zip"
               },
               "Handler": "handler.getAuthURL",
               "Runtime": "nodejs12.x",
@@ -193,7 +193,7 @@
                   "CLIENT_ID": "41556250072-ckh82g60ijfhm6unrkadovqbsiqpkegs.apps.googleusercontent.com",
                   "CLIENT_SECRET": "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",
                   "PROJECT_ID": "meet-app-335900",
-                  "CALENDAR_ID": "fullstackwebdev@careerfoundry.com"
+                  "CALENDAR_ID": "quilos.kyla@gmail.com"
                 }
               },
               "Role": {
@@ -207,14 +207,14 @@
               "GetAuthURLLogGroup"
             ]
           },
-          "GetAuthURLLambdaVersiontpBHoxR2lsFxKdfksa9pbDRMQuFTYXCqTMeGkWtc": {
+          "GetAuthURLLambdaVersionkm9X8WPauGPzTz82svQ21SS68AYeMw0pfjF3pm9JxYU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetAuthURLLambdaFunction"
               },
-              "CodeSha256": "Lp0bhjHmj4RT3IHRFwte1Y0/BYscDSnx93zyEWiPQe4="
+              "CodeSha256": "oCkD1atcWZbIfEWxnrnA73PLQVnlAypF1JT9LT2nLTU="
             }
           },
           "ApiGatewayRestApi": {
@@ -302,7 +302,7 @@
               "GetAuthURLLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1640393490719": {
+          "ApiGatewayDeployment1640402265290": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -364,7 +364,7 @@
           "GetAuthURLLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetAuthURLLambdaVersiontpBHoxR2lsFxKdfksa9pbDRMQuFTYXCqTMeGkWtc"
+              "Ref": "GetAuthURLLambdaVersionkm9X8WPauGPzTz82svQ21SS68AYeMw0pfjF3pm9JxYU"
             },
             "Export": {
               "Name": "sls-auth-server-dev-GetAuthURLLambdaFunctionQualifiedArn"
@@ -501,7 +501,7 @@
         "timeout": 60,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetAuthURLLambdaVersiontpBHoxR2lsFxKdfksa9pbDRMQuFTYXCqTMeGkWtc"
+        "versionLogicalId": "GetAuthURLLambdaVersionkm9X8WPauGPzTz82svQ21SS68AYeMw0pfjF3pm9JxYU"
       }
     },
     "configValidationMode": "warn",
@@ -523,7 +523,7 @@
     "artifact": "/Users/KylaQuilos/Meet/auth-server/.serverless/auth-server.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/auth-server/dev/1640393497421-2021-12-25T00:51:37.421Z",
+    "artifactDirectoryName": "serverless/auth-server/dev/1640402273017-2021-12-25T03:17:53.017Z",
     "artifact": "auth-server.zip"
   }
 }
