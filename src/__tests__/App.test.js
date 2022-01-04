@@ -65,5 +65,23 @@ describe('<App /> integration', () => {
 		const allEvents = await getEvents();
 		expect(AppWrapper.state('events')).toEqual(allEvents);
 		AppWrapper.unmount();
+	});
+
+	test('numberOfEvents state changes to match NumberOfEvents input changes', () => {
+		const AppWrapper = mount(<App />);
+		const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+		const inputChange = {target: {value: 20}};
+		NumberOfEventsWrapper.find('input').simulate('change', inputChange);
+		AppWrapper.setState({
+			numberOfEvents: inputChange
+		})
+		expect(AppWrapper.state('numberOfEvents')).toEqual(inputChange);
+		AppWrapper.unmount();
+	})
+
+	test('check for default state value of numberOfEvents', () => {
+		const AppWrapper = mount(<App />);
+		expect(AppWrapper.state('numberOfEvents')).toEqual(32);
+		AppWrapper.unmount();
 	})
 })

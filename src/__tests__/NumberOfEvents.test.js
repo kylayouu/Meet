@@ -12,9 +12,9 @@ describe('<NumberOfEvents /> component', () => {
 		expect(NumberOfEventsWrapper.find('.number-input')).toHaveLength(1);
 	});
 
-	test('check for change in input', () => {
-		const obj = { target: {value: 10}};
-		NumberOfEventsWrapper.find('.number-input').simulate('change', obj)
-		expect(NumberOfEventsWrapper.state('number')).toBe(10);
-	})
+	test('render results based on input', () => {
+		const numberOfEvents = NumberOfEventsWrapper.prop('numberOfEvents');
+		expect(NumberOfEventsWrapper.find('.number-input').prop('value')).toBe(numberOfEvents);
+	});
+
 })
