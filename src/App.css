@@ -211,3 +211,8 @@ input[type="number"] {
     margin: 0 auto;
   }
 }
+
+
+.NumberOfEvents {
+  margin: 1em;
+}

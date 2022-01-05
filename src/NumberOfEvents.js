@@ -9,10 +9,11 @@ constructor(props)
 	render() {
 		return (
 			<div className='NumberOfEvents'>
-				Number of Events:
+				# of Events:
 				<input 
 				type='number'
 				className='number-input'
+				style={{ marginLeft: '1em'}}
 				value={this.props.numberOfEvents}
 				onChange={this.props.handleNumberChange}/>
 			</div>
