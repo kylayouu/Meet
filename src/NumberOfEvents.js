@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
 class NumberOfEvents extends Component {
-constructor(props)
-{
-	super(props);
-	console.log(props)
-}
+// constructor(props)
+// {
+// 	super(props);
+// 	console.log(props)
+// }
 	render() {
 		return (
 			<div className='NumberOfEvents'>
