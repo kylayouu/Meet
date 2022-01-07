@@ -17,12 +17,12 @@ class Event extends Component {
 		const { collapsed } = this.state;
 		const { event } = this.props;
 		return (
-			<div>
+			<div className='event'>
 				<h2 className='event-summary'>{event.summary}</h2>
 				<p className='start-time'>{event.start.dateTime} ({event.start.timeZone})</p>
 				<p className='event-location'>@{event.summary} | {event.location}</p>
 
-				<Button className={`${collapsed ? 'show' : 'hide'}-details`} onClick={this.handleClick}>
+				<Button className={`details-btn ${collapsed ? 'show' : 'hide'}-details`} onClick={this.handleClick}>
           {collapsed ? 'Show Details' : 'Hide Details'}
         </Button>
 
