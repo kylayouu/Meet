@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as atatus from 'atatus-spa';
 
-atatus.config('ad99e09569d34f33941687ecd534d651').install();
+atatus.config('80588762c6a548eebe7ad4ae14dda50d').install();
 
 ReactDOM.render(
   <React.StrictMode>
