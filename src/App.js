@@ -11,7 +11,8 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 32
+    numberOfEvents: 32,
+    errorText: ''
   }
 
   componentDidMount() {
@@ -41,16 +42,25 @@ class App extends Component {
   }
 
   handleNumberChange = (e) => {
-		this.setState({
-			numberOfEvents: e.target.value
-		})
+    let value = e.target.value;
+    if (value <= 0) {
+      this.setState({
+        numberOfEvents: value,
+        errorText: 'Please enter a number greater than 0.'
+      });
+    } else {
+      this.setState({
+        numberOfEvents: value,
+        errorText: ''
+      });
+    }
 	}
 
   render() {
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} numberOfEvents={this.state.numberOfEvents} />
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} handleNumberChange={this.handleNumberChange} />
+        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} handleNumberChange={this.handleNumberChange} errorText={this.state.errorText} />
         <EventList events={this.state.events}/>
       </div>
     );

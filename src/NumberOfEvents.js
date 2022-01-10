@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import { ErrorAlert } from './Alert';
 
 class NumberOfEvents extends Component {
+
 // constructor(props)
 // {
 // 	super(props);
 // 	console.log(props)
 // }
 	render() {
+		const { errorText } = this.props;
 		return (
 			<div className='NumberOfEvents'>
 				# of Events:
@@ -16,6 +19,7 @@ class NumberOfEvents extends Component {
 				style={{ marginLeft: '1em'}}
 				value={this.props.numberOfEvents}
 				onChange={this.props.handleNumberChange}/>
+				<ErrorAlert text={errorText} />
 			</div>
 		)
 	}

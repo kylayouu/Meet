@@ -58,6 +58,7 @@ input[type="number"] {
   top: 43px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
+  padding: 0;
 }
 
 .suggestions > li {
@@ -215,4 +216,16 @@ input[type="number"] {
 
 .NumberOfEvents {
   margin: 1em;
+}
+
+/* .alert-text {
+  margin: 1em;
+  text-align: center;
+  border: 3px #000;
+} */
+
+.city-search-row {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
 }
