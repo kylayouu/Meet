@@ -35,7 +35,6 @@ class Event extends Component {
 						<p>{event.description}</p>
 					</div>
 				}
-
 			</div>
 		)
 	}

@@ -51,7 +51,6 @@ input[type="number"] {
 
 .suggestions {
   width: 250px;
-  position: absolute;
   z-index: 2;
   align-self: center;
   margin: 0;
@@ -78,22 +77,20 @@ input[type="number"] {
 }
 
 .event {
-  padding: 10px 10px 35px;
+  padding: 10px;
   margin-bottom: 10px;
-  text-align: left;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  position: relative;
+  text-align: center;
 }
 
 .details-btn {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+}
+
+.details {
+  padding: 2em 1em 0em 1em;
 }
 
 .name {
@@ -127,11 +124,6 @@ input[type="number"] {
   grid-gap: 20px;
   padding: 20px;
   font-family: sans-serif;
-}
-
-.Alert {
-  position: fixed;
-  top: 20px;
 }
 
 .data-vis-wrapper {
@@ -218,14 +210,23 @@ input[type="number"] {
   margin: 1em;
 }
 
-/* .alert-text {
-  margin: 1em;
-  text-align: center;
-  border: 3px #000;
-} */
+.event-list-container {
+  margin: 3em;
+}
 
-.city-search-row {
-  display: flex;
-  flex-direction: row;
+.event-list {
+	border: 1px solid rgb(127, 127, 127);
+	border-radius: 2px;
+	padding: 1em 0;
+	margin: 0 .5em;
+	box-shadow: 2px 2px 5px 2px rgb(80, 80, 80);
+}
+
+.event-list-row {
+  justify-content: center;
+}
+
+.EventList {
+  padding: 0;
   margin: auto;
 }
