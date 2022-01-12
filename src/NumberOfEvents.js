@@ -12,7 +12,7 @@ class NumberOfEvents extends Component {
 		const { errorText } = this.props;
 		return (
 			<div className='NumberOfEvents'>
-				# of Events:
+				<label># of Events:</label>
 				<input 
 				type='number'
 				className='number-input'
